@@ -1,0 +1,54 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <!-- START: Include from page meta -->
+                    <div class="detail-meta">
+                        <h2 class="no-margin">{{leader.name}}</h2>
+                        <p class="meta">{{leader.year}}, {{leader.position}}</p>
+                    </div><!-- /.detail-meta -->
+
+                    <div class="text">
+                        </p>
+                        {{#each leader.bio}}
+                            <p>{{& this}}</p>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-nav show-for-large" id="section-nav">
+            <div class="row">
+                <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                     data-parent-url="/pattern-library/index">
+                    <ul>
+                        {{#each leadership}}
+                            <li class="">
+                                <a href="/leadership/{{id}}"
+                                   itemprop="url" class="">
+                                    <span style="" itemprop="name">{{name}}</span>
+                                    <dl style="margin:0; line-height: 0;" class="meta">
+                                        <dt style="font-size: 11px; line-height:10px;">{{position}}</dt>
+                                    </dl>
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

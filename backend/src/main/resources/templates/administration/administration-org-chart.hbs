@@ -1,0 +1,47 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/orgchart/2.1.9/js/jquery.orgchart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/orgchart/2.1.9/css/jquery.orgchart.min.css">
+<script type="text/javascript">
+
+    var orgMembers = {{& org-members}};
+
+    jQuery(function() {
+
+        var datasource = orgMembers;
+
+        jQuery('#chart-container').orgchart({
+            'data': datasource,
+            'nodeContent': 'title',
+            'verticalLevel': 3
+        });
+
+        frontend.unsetBorderCollapseTable();
+        frontend.unsetBgColor();
+    });
+
+</script>
+
+<main class="wide no-section-nav">
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Org Chart</h2>
+                        <div class="clear" id="chart-container" style="width:90%"></div>
+
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+    </div>
+
+</main>
+
+{{> partials/footer.hbs }}
+
+</body>
+
+</html>

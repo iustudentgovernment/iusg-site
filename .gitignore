@@ -1,0 +1,7 @@
+/backend/.gradle/
+/backend/build/
+/.gradle/
+/.idea/
+/build/
+/frontend/build/
+/shared/build/

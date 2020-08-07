@@ -1,0 +1,56 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Inspire Leadership</h2>
+                        <p>
+                            Rachel and Ruhan ran for Student Body President and Vice President to help inspire
+                            new solutions to longstanding problems at Indiana University.</p>
+                        <p>
+                            Our incoming administration is full of inspiring, passionate students who want to help
+                            make IU more affordable, accessible, and manageable for all students. Click through the
+                            navigation to see our leadership figures.
+                        </p>
+                        <p>
+                            Are you interested in joining our administration? Click <a href="/administration/openings">here</a> to see current
+                            job openings.
+                        </p>
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+    </div>
+
+    <div class="section-nav show-for-large" id="section-nav">
+        <div class="row">
+            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                 data-parent-url="/pattern-library/index">
+                <ul>
+                    {{#each leadership}}
+                        <li class="">
+                            <a href="/leadership/{{id}}"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">{{name}}</span>
+                                <dl style="margin:0; line-height: 0;" class="meta">
+                                    <dt style="font-size: 11px; line-height:10px;">{{position}}</dt>
+                                </dl>
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

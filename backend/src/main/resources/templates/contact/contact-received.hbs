@@ -1,0 +1,44 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Contact Request Received</h2>
+                        <p>
+                            We've received your message and we'll get back with you soon.
+                        </p>
+                    </div>
+
+
+                </div><!-- /.layout --></div>
+        </div>
+    </div>
+
+    <div class="section-nav show-for-large" id="section-nav">
+        <div class="row">
+            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                 data-parent-url="/pattern-library/index">
+                <ul>
+                    <li><a href="/administration/orgchat">IUSG Org Chart</a></li>
+                    <li><a href="/administration/openings">Apply for a job in our incoming administration</a></li>
+                    <li><a href="/priorities">Our policy priorities</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    frontend.formErrorCheck();
+</script>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

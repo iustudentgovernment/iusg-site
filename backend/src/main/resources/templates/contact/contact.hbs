@@ -1,0 +1,103 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Contact Us</h2>
+                        <p>
+                            Send us a message and we'll get back with you soon.
+                        </p>
+                    </div>
+
+                    <form action="/contact" method="post" name="contact-form" enctype="multipart/form-data"
+                          id="contact-form">
+                            <div hidden id="error-box" class="errors-round"><p style="font-size: 13px; color: #7d110c; font-weight: bold;">
+                                Submission Error: </p>
+                                <ul>
+                                    <li style="font-size: 14px; margin-bottom: 0;"><strong><span id="error-text"></span></strong></li>
+                                </ul>
+                                <p></p></div>
+
+
+                        <div class="form-group"
+                             style="display: inline-block; width: 49%; min-width: 230px; margin-right: 20px;">
+                            <label for="name">
+                                <span>Name:</span><span class="ast">*</span>
+                            </label>
+                            <input required name="name" id="name" class="form-control" placeholder="Name" type="text"
+                                   value="" maxlength="40">
+                        </div>
+
+                        <br/>
+
+                        <div class="form-group"
+                             style="display: inline-block; width: 31%; min-width: 200px; margin-right: 20px;">
+                            <label for="email">
+                                <span>Email Address:</span><span class="ast">*</span>
+                            </label>
+                            <input required name="email" id="email" class="form-control" placeholder="Email Address"
+                                   type="email" value="" maxlength="60">
+                        </div>
+
+                        <div class="form-group" style="display: inline-block; width: 34%; min-width: 200px;">
+                            <label for="confirmemail">
+                                <span>Confirm Email Address:</span><span class="ast">*</span>
+                            </label>
+                            <input required name="confirmemail" id="confirmemail" class="form-control"
+                                   placeholder="Confirm Email Address" type="email" value="" maxlength="60">
+                        </div>
+
+                        <div class="form-group"
+                             style="display: inline-block; width: 49%; min-width: 230px; margin-right: 20px;">
+                            <label for="subject">
+                                <span>Subject:</span><span class="ast">*</span>
+                            </label>
+                            <input required name="subject" id="subject" class="form-control"
+                                   placeholder="Message Subject" type="text" value="" maxlength="50">
+                        </div>
+
+                        <div style="clear: both;"></div>
+
+                        <div class="form-group">
+                            <label for="message">
+                                <span>Message:</span><span class="ast">*</span>
+                            </label>
+
+                            <textarea required name="message" id="message" class="form-control" placeholder="Enter message here"
+                                      rows="10" maxlength="4001"></textarea>
+                        </div>
+                        <input class="button" style="margin-bottom: 10px; margin-top: 10px;" type="submit" id="submit"
+                               name="submit" value="Send Message">
+                    </form>
+                </div><!-- /.layout --></div>
+        </div>
+    </div>
+
+    <div class="section-nav show-for-large" id="section-nav">
+        <div class="row">
+            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                 data-parent-url="/pattern-library/index">
+                <ul>
+                    <li><a href="/administration/orgchat">IUSG Org Chart</a></li>
+                    <li><a href="/administration/openings">Apply for a job in our incoming administration</a></li>
+                    <li><a href="/priorities">Our policy priorities</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    frontend.formErrorCheck();
+</script>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

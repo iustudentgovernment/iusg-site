@@ -1,0 +1,137 @@
+.gsc-control-cse {
+    font-family: arial, helvetica neue, sans-serif
+}
+
+.gsc-control-cse .gsc-table-result {
+    font-family: arial, helvetica neue, sans-serif
+}
+
+.gscb_a {
+    display: inline-block;
+    font: 27px/13px arial, sans-serif
+}
+
+.gsst_a .gscb_a {
+    color: #a1b9ed;
+    cursor: pointer
+}
+
+.gsst_a:hover .gscb_a, .gsst_a:focus .gscb_a {
+    color: #36c
+}
+
+.gsst_a:hover .gsst_e, .gsst_a:focus .gsst_e {
+    opacity: 0.72;
+}
+
+.gsst_a:active .gsst_e {
+    opacity: 1;
+}
+
+.gssb_c {
+    border: 0;
+    position: absolute;
+    z-index: 989
+}
+
+.gssb_e {
+    border: 1px solid #ccc;
+    border-top-color: #d9d9d9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: default
+}
+
+.gssb_f {
+    visibility: hidden;
+    white-space: nowrap
+}
+
+.gssb_i .gss_ifl {
+    visibility: visible
+}
+
+.gssb_e {
+    border: 0
+}
+
+input.gsc-input::-webkit-input-placeholder {
+    font-size: 14px
+}
+
+input.gsc-input:-moz-placeholder {
+    font-size: 14px
+}
+
+input.gsc-input::-moz-placeholder {
+    font-size: 14px
+}
+
+input.gsc-input:-ms-input-placeholder {
+    font-size: 14px
+}
+
+input.gsc-input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+input.gsc-input:focus:-moz-placeholder {
+    color: transparent
+}
+
+input.gsc-input:focus::-moz-placeholder {
+    color: transparent
+}
+
+input.gsc-input:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+.gssb_c .gsc-completion-container {
+    position: static
+}
+
+.gssb_c {
+    z-index: 5000
+}
+
+.gsc-completion-container table {
+    background: transparent;
+    font-size: inherit;
+    font-family: inherit
+}
+
+.gssb_c > tbody > tr, .gssb_c > tbody > tr > td, .gssb_d, .gssb_d > tbody > tr, .gssb_d > tbody > tr > td, .gssb_e, .gssb_e > tbody > tr, .gssb_e > tbody > tr > td {
+    padding: 0;
+    margin: 0;
+    border: 0
+}
+
+.gssb_a table, .gssb_a table tr, .gssb_a table tr td {
+    padding: 0;
+    margin: 0;
+    border: 0
+}
+
+main { position:relative;padding-top:10px }
+@media only screen and (min-width:64em){ main { padding-top:50px}}
+
+.no-margin-top {
+    margin-top: 0 !important;
+}
+
+.unset-border {
+    border-collapse: unset !important;
+}
+
+.remove-bg {
+    background-color: transparent !important;
+}
+
+.clear {
+    all: unset !important;
+}
+
+.size-1-25 {
+    font-size: 1.25rem;
+}

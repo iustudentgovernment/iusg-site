@@ -1,0 +1,180 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+{{#with job}}
+    <main>
+        <div id="main-content">
+            <div class="bg-none section no-margin-top" id="content">
+                <div class="row">
+                    <div class="layout">
+                        <div class="text"><h2>IUSG Exec Application</h2>
+                            <div class="detail-meta ">
+                                <p><span class="meta size-1-25">You're applying for:</span> {{& title}}
+                                    on {{committeesText}}
+
+                                <p><span class="meta size-1-25">Requires Congressional Confirmation?</span> {{#if
+                                        requiresCongressionalConfirmation}}
+                                    Yes{{else}}No{{/if}}</p>
+
+                                <p><span class="meta size-1-25">Your boss{{#if multipleBosses}}
+                                    es{{/if}} would be:</span> {{bossesText}}</p>
+
+                                {{#unless unfilled}}
+                                    <p><span class="meta size-1-25">Exec members with this position: </span> {{#if
+                                            unfilled}}None yet{{else}}{{membersText}}{{/if}}</p>
+                                {{/unless}}
+
+                                {{#if notes}}
+                                    <p><span class="meta size-1-25">Notes:</span></p>
+                                    <ul>
+                                        {{#each notes}}
+                                            <li>{{this}}</li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+
+                                <p>
+                                    Note that you may only serve in one IUSG branch (Executive, Legislative, Judicial) at
+                                a time. Before accepting an Exec position, you must resign any current Legislative or Judicial role.
+                                </p>
+
+                                <form action="/administration/apply/{{id}}" method="post" name="contact-form" enctype="multipart/form-data"
+                                      id="application">
+                                    <div hidden id="error-box" class="errors-round"><p
+                                            style="font-size: 13px; color: #7d110c; font-weight: bold;">
+                                        Submission Error: </p>
+                                        <ul>
+                                            <li style="font-size: 14px; margin-bottom: 0;"><strong><span
+                                                    id="error-text"></span></strong></li>
+                                        </ul>
+                                        <p></p></div>
+
+
+                                    <div class="form-group"
+                                         style="display: inline-block; width: 49%; min-width: 230px; margin-right: 20px;">
+                                        <label for="name">
+                                            <span>Name:</span><span class="ast">*</span>
+                                        </label>
+                                        <input required name="name" id="name" class="form-control" placeholder="Name"
+                                               type="text"
+                                               value="" maxlength="40">
+                                    </div>
+
+                                    <br/>
+
+                                    <div class="form-group"
+                                         style="display: inline-block; width: 31%; min-width: 200px; margin-right: 20px;">
+                                        <label for="email">
+                                            <span>IU Email Address:</span><span class="ast">*</span>
+                                        </label>
+                                        <input required name="email" id="email" class="form-control"
+                                               placeholder="Email Address"
+                                               type="email" value="" maxlength="60">
+                                    </div>
+
+                                    <div class="form-group"
+                                         style="display: inline-block; width: 34%; min-width: 200px;">
+                                        <label for="confirmemail">
+                                            <span>Confirm IU Email Address:</span><span class="ast">*</span>
+                                        </label>
+                                        <input required name="confirmemail" id="confirmemail" class="form-control"
+                                               placeholder="Confirm Email Address" type="email" value="" maxlength="60">
+                                    </div>
+
+                                    <div class="form-group"
+                                         style="display: inline-block; width: 49%; min-width: 230px; margin-right: 20px;">
+                                        <label for="subject">
+                                            <span>Year:</span><span class="ast">*</span>
+                                        </label>
+                                        <fieldset role="radiogroup" aria-required="true">
+                                            <ul style="list-style-type: none;">
+                                                {{#each years}}
+                                                    <li style="margin-bottom: 0;">
+                                                        <input type="radio" name="year-{{id}}">
+                                                        <label for="year-1" class="rvt-m-right-sm">{{readable}}</label>
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="form-group"
+                                         style="display: inline-block; width: 49%; min-width: 500px; margin-right: 20px;">
+                                        <label for="subject">
+                                            <span>School:</span><span class="ast">*</span>
+                                        </label>
+                                        <fieldset role="group" aria-required="true">
+                                            <ul style="list-style-type: none;">
+                                                {{#each schools}}
+                                                    <li style="margin-bottom: 0;">
+                                                        <input type="checkbox" name="school-{{id}}">
+                                                        <label for="school-1" class="rvt-m-right-sm">{{readable}}</label>
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+                                        </fieldset>
+                                    </div>
+
+                                    <div style="clear: both;"></div>
+
+                                    <div class="form-group">
+                                        <label for="whyjoin">
+                                            <span>Why are you interested in joining IUSG?</span><span class="ast">*</span>
+                                        </label>
+
+                                        <textarea required name="whyjoin" id="whyjoin" class="form-control"
+                                                  placeholder="Answer here.."
+                                                  rows="10" maxlength="4001"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="whyrole">
+                                            <span>Why are you interested in this role? How do you want to impact our campus?</span><span class="ast">*</span>
+                                        </label>
+
+                                        <textarea required name="whyrole" id="whyrole" class="form-control"
+                                                  placeholder="Answer here.."
+                                                  rows="10" maxlength="4001"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="additionalqualifications">
+                                            <span>Do you have any additional qualifications or experience related to this role? No is an acceptable answer.</span>
+                                        </label>
+
+                                        <textarea name="additionalqualifications" id="additionalqualifications" class="form-control"
+                                                  placeholder="Answer here.."
+                                                  rows="3" maxlength="4001"></textarea>
+                                    </div>
+
+
+                                    <input class="button" style="margin-bottom: 10px; margin-top: 10px;"
+                                           onclick="frontend.validateJobSubmission()"
+                                           id="submit-app"
+                                           name="submit-app" value="Submit application">
+
+                                </form>
+                            </div>
+
+                            <br/>
+                            <p>
+                                See our <a href="/administration/orgchart">org chart</a> or job openings <a
+                                    href="/administration/openings">here</a>.
+                            </p>
+                        </div>
+                    </div><!-- /.layout --></div>
+            </div>
+
+        </div>
+
+        {{> partials/administration-panel.hbs }}
+
+    </main>
+{{/with}}
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

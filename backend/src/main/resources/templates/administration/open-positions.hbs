@@ -1,0 +1,40 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Open positions</h2>
+                        <p>
+                            Our vision for IUSG is to rebuild the Executive Branch from the ground up to work as an
+                            activist group fighting for all students. We aim to leverage relationships, technology, and
+                            grassroots organizing to make Indiana University a better place to live, work, and
+                            learn. <b>We are currently looking for applicants for the following positions:</b>
+                        </p>
+                        <ul>
+                            {{#each openings}}
+                                <li>{{& postingTitle}}.  <a href="/administration/posting/{{id}}">Click to see job posting.</a></li>
+                            {{/each}}
+                        </ul>
+                        <p>
+                            See our <a href="/administration/orgchart">org chart</a> or job openings <a
+                                href="/administration/openings">here</a>.
+                        </p>
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+    </div>
+
+    {{> partials/administration-panel.hbs }}
+
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+{{#with job}}
+    <main>
+        <div id="main-content">
+            <div class="bg-none section no-margin-top" id="content">
+                <div class="row">
+                    <div class="layout">
+                        <div class="text"><h2>{{& postingTitle}}</h2>
+                            <div class="detail-meta ">
+                                <p><span class="meta size-1-25">Formal Title:</span> {{title}}</p>
+                                <p><span class="meta size-1-25">Currently Hiring?</span> {{#if hiring}}
+                                    Yes, <a href="/administration/apply/{{id}}">apply here</a>.{{else}}No{{/if}}</p>
+                                {{#if hiring}}
+                                    <p><span class="meta size-1-25">Requires Congressional Confirmation?</span> {{#if requiresCongressionalConfirmation}}
+                                        Yes{{else}}No{{/if}}</p>
+                                {{/if}}
+
+                                <p><span class="meta size-1-25">This position is a part of:</span> {{committeesText}}
+                                </p>
+                                <p><span class="meta size-1-25">Direct boss{{#if multipleBosses}}
+                                    es{{/if}}:</span> {{bossesText}}</p>
+
+                                {{#unless unfilled}}
+                                    <p><span class="meta size-1-25">Exec members with this position: </span> {{#if
+                                            unfilled}}None yet{{else}}{{membersText}}{{/if}}</p>
+                                {{/unless}}
+
+                                {{#if notes}}
+                                    <p><span class="meta size-1-25">Notes:</span></p>
+                                    <ul>
+                                        {{#each notes}}
+                                            <li>{{this}}</li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </div>
+
+                            <br/>
+                            <p>
+                                See our <a href="/administration/orgchart">org chart</a> or job openings <a
+                                    href="/administration/openings">here</a>.
+                            </p>
+                        </div>
+                    </div><!-- /.layout --></div>
+            </div>
+
+        </div>
+
+        {{> partials/administration-panel.hbs }}
+
+    </main>
+{{/with}}
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+.ast-error {
+    font-size: 1.5em;
+    color: red;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: .3em;
+}
+
+.ast {
+    display: inline-block;
+    float: right;
+    font-size: 1.0em;
+    color: red;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+label{
+    display:inline-block;
+    margin-bottom:5px;
+    font-weight:bold
+}
+
+#content form {
+    font-size: 1.1em;
+    line-height: 1.4em;
+
+}
+
+
+.form-control:-moz-placeholder{
+    color:#999
+}
+
+.form-control::-moz-placeholder{
+    color:#999
+}
+
+.form-control:-ms-input-placeholder{
+    color:#999
+}
+
+.form-control::-webkit-input-placeholder{
+    color:#999
+}
+
+.form-control{
+    display:block;
+    width:100%;
+    height:34px;
+    padding:6px 12px;
+    font-size:14px;
+    line-height:1.428571429;
+    color:#555;
+    vertical-align:middle;
+    background-color:#fff;
+    border:1px solid #ccc;
+    border-radius:4px;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.form-control:focus{
+    border-color:#66afe9;
+    outline:0;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control{
+    cursor:not-allowed;
+    background-color:#eee
+}
+
+textarea.form-control{
+    height:auto
+}
+
+.form-group{
+    margin-bottom:15px
+}
+
+
+
+.has-warning .help-block,.has-warning .control-label{
+    color:#c09853
+}
+
+.has-warning .form-control{
+    border-color:#c09853;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075)
+}
+
+.has-warning .form-control:focus{
+    border-color:#a47e3c;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #dbc59e;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #dbc59e
+}
+
+.has-warning .input-group-addon{
+    color:#c09853;
+    border-color:#c09853;
+    background-color:#fcf8e3
+}
+
+.has-error .help-block,.has-error .control-label{
+    color:#b94a48
+}
+
+.has-error .form-control{
+    border-color:#b94a48;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075)
+}
+
+.has-error .form-control:focus{
+    border-color:#953b39;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #d59392;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #d59392
+}
+
+.has-error .input-group-addon{
+    color:#b94a48;
+    border-color:#b94a48;
+    background-color:#f2dede
+}
+
+.has-success .help-block,.has-success .control-label{
+    color:#468847
+}
+
+.has-success .form-control{
+    border-color:#468847;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075)
+}
+
+.has-success .form-control:focus{
+    border-color:#356635;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #7aba7b;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #7aba7b
+}
+
+.has-success .input-group-addon{
+    color:#468847;
+    border-color:#468847;
+    background-color:#dff0d8
+}
+
+.form-control-static{
+    margin-bottom:0;
+    padding-top:7px
+}
+
+.help-block{
+    display:block;
+    margin-top:5px;
+    margin-bottom:10px;
+    color:#737373;
+    font-size: 14px;
+}
+
+@media(min-width:768px){
+    .form-inline .form-group{
+        display:inline-block;
+        margin-bottom:0;
+        vertical-align:middle
+    }
+
+    .form-inline .form-control{
+        display:inline-block
+    }
+
+    .form-inline .radio,.form-inline .checkbox{
+        display:inline-block;
+        margin-top:0;
+        margin-bottom:0;
+        padding-left:0
+    }
+
+    .form-inline .radio input[type="radio"],.form-inline .checkbox input[type="checkbox"]{
+        float:none;
+        margin-left:0
+    }
+
+}
+
+.form-horizontal .control-label,.form-horizontal .radio,.form-horizontal .checkbox,.form-horizontal .radio-inline,.form-horizontal .checkbox-inline{
+    margin-top:0;
+    margin-bottom:0;
+    padding-top:7px
+}
+
+.form-horizontal .form-group{
+    margin-left:-15px;
+    margin-right:-15px
+}
+
+.form-horizontal .form-group:before,.form-horizontal .form-group:after{
+    content:" ";
+    display:table
+}
+
+.form-horizontal .form-group:after{
+    clear:both
+}
+
+.form-horizontal .form-group:before,.form-horizontal .form-group:after{
+    content:" ";
+    display:table
+}
+
+.form-horizontal .form-group:after{
+    clear:both
+}
+
+@media(min-width:768px){
+    .form-horizontal .control-label{
+        text-align:right
+    }
+
+}
+
+.round {
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 8px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 8px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 8px;
+
+    background: #e3f7fc;
+    border: 3px solid #8ed9f6;
+    padding: 10px;
+    margin: 0 0 15px 0;
+}
+
+.errors-round {
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 8px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 8px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 8px;
+
+    background: #ffecec;
+    padding: 10px;
+    margin: 15px 0 15px 0;
+}
+
+.success-round {
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 8px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 8px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 8px;
+
+    background: #e9ffd9;
+    border: 3px solid #a6ca8a;
+    padding: 10px;
+    margin: 10px 0 15px 0;
+}
+
+.antispam { display:none;}
+
+.labl {
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-right: 200px;
+    background-color: #ccc;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+

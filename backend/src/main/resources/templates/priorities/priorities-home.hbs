@@ -1,0 +1,55 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Our priorities</h2>
+                        <p>
+                            Our vision for IUSG is to rebuild the Executive Branch from the ground up to work as an
+                            activist group fighting for all students. We aim to leverage relationships, technology, and
+                            grassroots organizing to make Indiana University a better place to live, work, and
+                            learn.
+                        </p>
+                        <p>
+                            Use the navigation bar to browse some of our <b>{{numPriorities}}</b> listed priorities.
+                        </p>
+                        <p>
+                            Are you interested in joining our administration? Click <a href="/administration/openings">here</a> to see
+                            current
+                            job openings.
+                        </p>
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+    </div>
+
+    <div class="section-nav show-for-large" id="section-nav">
+        <div class="row">
+            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                 data-parent-url="/pattern-library/index">
+                <ul>
+                    {{#each priorities}}
+                        <li class="">
+                            <a href="/priorities/{{id}}"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">{{name}}</span>
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main class="wide no-section-nav">
+    <div class="content-top">
+        <div class="section breadcrumbs">
+            <div class="row">
+                <div class="layout">
+                    <ul itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a
+                                href="/" itemprop="item"><span itemprop="name">Home</span></a>
+                            <meta content="1" itemprop="position">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section page-title bg-none">
+            <div class="row">
+                <div class="layout"><h1>Page Not Found</h1></div>
+            </div>
+        </div>
+    </div>
+    <div id="main-content">
+        <div class="bg-none section" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h2>Sorry, we can’t find that page</h2>
+                        <p><span>Try using the site navigation bar to find what you're looking for.</span></p></div>
+                </div><!-- /.layout --></div>
+        </div>
+    </div>
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>
