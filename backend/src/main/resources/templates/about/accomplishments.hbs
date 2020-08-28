@@ -1,0 +1,50 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div class="content-top">
+        <div class="section breadcrumbs">
+            <div class="row">
+                <div class="layout">
+                    <ul itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a
+                                href="/" itemprop="item"><span itemprop="name">Home</span></a>
+                            <meta content="1" itemprop="position"/>
+                        </li>
+                        <li class="current" itemprop="itemListElement" itemscope="itemscope"
+                            itemtype="http://schema.org/ListItem"><span itemprop="name">About</span>
+                            <meta content="2" itemprop="position"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section page-title bg-none">
+            <div class="row">
+                <div class="layout"><h1>About</h1></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="collapsed bg-none section" id="content">
+            <div class="row">
+                <div class="layout"><h2 class="section-title">What Have We Been Up To? </h2>
+                    <!--<div class="text"><h4>Separating Congressional and Executive Elections </h4>
+                        <p><span style="font-weight: 400;">In the spring of 2018, the Congressional and Executive branch worked together to pass a Resolution to separate the two branches’ elections. The goal of this move is to threefold: to promote more fair elections, to improve accountability and commitment of Congress, and to include freshmen and transfer students in the legislative branch. </span>
+                        </p></div>-->
+                    <p>This page will be updated as the school year begins.</p>
+                </div><!-- /.layout --></div>
+        </div>
+    </div>
+
+    {{> "about/about-navbar.hbs" }}
+
+
+</main>
+{{> partials/footer.hbs }}
+</body>
+
+</html>

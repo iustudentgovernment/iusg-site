@@ -32,7 +32,6 @@ dependencies {
     implementation("com.sun.mail:javax.mail:1.6.2")
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation(project(":shared"))
 
 }
 

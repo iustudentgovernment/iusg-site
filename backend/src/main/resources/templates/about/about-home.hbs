@@ -1,0 +1,94 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div class="content-top">
+        <div class="section breadcrumbs">
+            <div class="row">
+                <div class="layout">
+                    <ul itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a
+                                href="/" itemprop="item"><span itemprop="name">Home</span></a>
+                            <meta content="1" itemprop="position"/>
+                        </li>
+                        <li class="current" itemprop="itemListElement" itemscope="itemscope"
+                            itemtype="http://schema.org/ListItem"><span itemprop="name">About</span>
+                            <meta content="2" itemprop="position"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section page-title bg-none">
+            <div class="row">
+                <div class="layout"><h1>About</h1></div>
+            </div>
+        </div>
+    </div>
+    <div id="main-content">
+        <div class="collapsed bg-none section" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h3>IUSG Exists For You </h3>
+                        <p>Indiana University Student Government (IUSG) exists to provide student input at the highest
+                            levels of faculty, staff, and administrative decision making. We work to improve the student
+                            experience and the university as whole by advocating for student ideas and well-being in a
+                            variety of ways.</p>
+                        <p>IUSG is composed of three branches:</p>
+                        <a class="button"
+                           href="/executive-branch">Executive
+                            Branch &#187;</a><span>&#160;</span>
+                        <br/>
+                        <a class="button" href="/congress">Congressional
+                            Branch &#187;</a><span>&#160;</span>
+                        <br/>
+                        <a class="button"
+                           href="/supreme-court">Judicial
+                            Branch &#187;</a>
+
+                        <p>Each of these branches works to protect student rights, enrich student life, and improve the
+                            university.</p>
+                        <p>IUSG also supports the<span>&#160;</span><a href="../student-rights/index.html">Department of
+                            Student Rights</a>,&#160;a highly trained group of students who advise and assist students
+                            and student groups in the campus judicial system.</p>
+                        <p>Most importantly, we are your student government. If you ever have ideas, concerns, or
+                            feedback on your experience at IU please<span>&#160;</span><a href="../contact/index.html">contact
+                                us!</a></p></div>
+                </div><!-- /.layout --></div>
+        </div>
+        <div class="collapsed bg-none section">
+            <div class="row">
+                <div class="layout">
+                    <div class="text">
+                        <h3>Mission Statement</h3>
+                        <span>We, the students of Indiana University Bloomington, join together as the Indiana University
+                            Student Government to give voice to our common grievances, concerns, and hopes, and to take
+                            action to realize an ever stronger university. The Indiana University Student Government will
+                            work to protect student rights, enrich student life, and improve Indiana University.
+                        </span>
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+        <div class="collapsed bg-none section">
+            <div class="row">
+                <div class="layout">
+                    <div class="text"><h3>Governing Documents</h3>
+                        <p><a class="button"
+                              href="https://drive.google.com/file/d/1-4hNqD0lfjYHFYQU_Jew4WzK_awnpafH/view?usp=sharing">Download
+                            the IUSG Bylaws&#160;&#187;</a></p>
+                        <p><a class="button" href="https://drive.google.com/file/d/1-4hNqD0lfjYHFYQU_Jew4WzK_awnpafH/view?usp=sharing">Download the IUSG
+                            Constitution&#160;&#187;</a></p></div>
+                </div><!-- /.layout --></div>
+        </div>
+    </div>
+
+    {{> "about/about-navbar.hbs" }}
+
+</main>
+{{> partials/footer.hbs }}
+</body>
+
+</html>

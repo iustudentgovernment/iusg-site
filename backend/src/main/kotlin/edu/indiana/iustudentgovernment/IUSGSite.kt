@@ -8,6 +8,8 @@ import edu.indiana.iustudentgovernment.controllers.studentRightsRoutes
 import edu.indiana.iustudentgovernment.http.statusConfiguration
 import edu.indiana.iustudentgovernment.authentication.User
 import edu.indiana.iustudentgovernment.authentication.casRoutes
+import edu.indiana.iustudentgovernment.controllers.aboutRoutes
+import edu.indiana.iustudentgovernment.controllers.editSiteRoutes
 import edu.indiana.iustudentgovernment.controllers.statementsRoutes
 import io.ktor.application.Application
 import io.ktor.application.install
@@ -42,6 +44,8 @@ fun Application.module() {
         studentRightsRoutes()
         statementsRoutes()
         casRoutes()
+        aboutRoutes()
+        editSiteRoutes()
     }
 
             if (cleanse) database.insertInitial()
