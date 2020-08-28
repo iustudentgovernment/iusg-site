@@ -1,0 +1,84 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text">
+                        {{#with statement}}
+                            <div class="row" style="margin-top: 30px;">
+                                <h2>Edit Statement</h2>
+                            </div>
+
+                            <div class="collapsed bg-none">
+                                <div class="row">
+                                    <article class="profile feed-item" itemscope="itemscope"
+                                             itemtype="http://schema.org/Person">
+                                        <form action="/create-new-statement" method="get">
+                                            <input hidden name="statementId" value="{{id}}" id="statementId">
+                                            <div class="content">
+                                                Title: <input id="title" name="title" style="width: 90%" type="text"
+                                                              value="{{title}}">
+                                                Branch:
+                                                <hr />
+                                                <select id="branch" name="branch" style="width: 65%">
+                                                    <option value="EXECUTIVE" {{#if isExecutive}}selected{{/if}}>Executive</option>
+                                                    <option value="LEGISLATIVE" {{#if isCongress}}selected{{/if}}>Congress</option>
+                                                    <option value="JUDICIAL" {{#if isJudicial}}selected{{/if}}>Supreme Court</option>
+                                                </select>
+                                                <hr />
+                                                Text: <textarea id="text" name="text" rows="15"
+                                                                style="width: 65%">{{& rawMarkdown}}</textarea>
+                                            </div>
+
+                                            <input type="submit" class="button" value="Submit"/>
+                                        </form>
+                                    </article>
+                                </div>
+                            </div>
+
+                        {{/with}}
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+    </div>
+
+    <div class="section-nav show-for-large" id="section-nav">
+        <div class="row">
+            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                 data-parent-url="/pattern-library/index">
+                <ul>
+                    <li class="">
+                        <a href="/statements/executive"
+                           itemprop="url" class="">
+                            <span style="" itemprop="name">Executive Statements</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/statements/congress"
+                           itemprop="url" class="">
+                            <span style="" itemprop="name">Congress Statements</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/statements/sc"
+                           itemprop="url" class="">
+                            <span style="" itemprop="name">Supreme Court Statements</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

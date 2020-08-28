@@ -1,0 +1,119 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+<main>
+    <div id="main-content">
+        <div class="bg-none section no-margin-top" id="content">
+            <div class="row">
+                <div class="layout">
+                    <div class="text">
+                        <h2>IUSG Statements</h2>
+
+                        {{#if isPrivileged}}
+                            <a href="/create-statement" class="button">New Statement</a>
+                        {{/if}}
+
+                        {{#if exec-statements}}
+                            <h3>Executive Branch</h3>
+                        {{/if}}
+
+                        {{#each exec-statements}}
+                            <div style="margin-bottom: 25px; margin-top: 25px;">
+                                <article class="profile" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                    <div class="content"><p class="no-margin size-1"><a href="/statements/{{id}}">{{title}}</a></p>
+                                        <dl class="meta inline">
+                                            <dt>By:</dt>
+                                            <dd>{{& author.asLink}}</dd>
+
+                                            <dt>Published:</dt>
+                                            <dd>{{date}}</dd>
+
+                                        </dl>
+                                    </div>
+                                </article>
+                            </div>
+                        {{/each}}
+
+                        {{#if congress-statements}}
+                            <h3>Congress</h3>
+                        {{/if}}
+
+                        {{#each congress-statements}}
+                            <div style="margin-bottom: 25px; margin-top: 25px;">
+                                <article class="profile" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                    <div class="content"><p class="no-margin size-1"><a href="/statements/{{id}}">{{title}}</a></p>
+                                        <dl class="meta inline">
+                                            <dt>By:</dt>
+                                            <dd>{{& author.asLink}}</dd>
+
+                                            <dt>Published:</dt>
+                                            <dd>{{date}}</dd>
+
+                                        </dl>
+                                    </div>
+                                </article>
+                            </div>
+                        {{/each}}
+
+                        {{#if sc-statements}}
+                            <h3>Supreme Court</h3>
+                        {{/if}}
+
+                        {{#each sc-statements}}
+                            <div style="margin-bottom: 25px; margin-top: 25px;">
+                                <article class="profile" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                    <div class="content"><p class="no-margin size-1"><a href="/statements/{{id}}">{{title}}</a></p>
+                                        <dl class="meta inline">
+                                            <dt>By:</dt>
+                                            <dd>{{& author.asLink}}</dd>
+
+                                            <dt>Published:</dt>
+                                            <dd>{{date}}</dd>
+
+                                        </dl>
+                                    </div>
+                                </article>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div><!-- /.layout --></div>
+        </div>
+
+    </div>
+
+    <div class="section-nav show-for-large" id="section-nav">
+        <div class="row">
+            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                 data-parent-url="/pattern-library/index">
+                <ul>
+                    <li class="">
+                        <a href="/statements/executive"
+                           itemprop="url" class="">
+                            <span style="" itemprop="name">Executive Statements</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/statements/congress"
+                           itemprop="url" class="">
+                            <span style="" itemprop="name">Congress Statements</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/statements/sc"
+                           itemprop="url" class="">
+                            <span style="" itemprop="name">Supreme Court Statements</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</main>
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

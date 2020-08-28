@@ -2,6 +2,7 @@
     <!-- about -->
     <li class="first home has-children" aria-haspopup="true">
         <a href="/about" {{#ifeq pageId "about"}}class="current" {{/ifeq}} aria-label="About">About</a>
+
         <ul class="children">
             <li>
                 <a href="/about/UNEARTH" itemprop="url">
@@ -40,6 +41,33 @@
             </li>
         </ul>
     </li>
+
+    <!-- statements -->
+    <li class="has-children">
+        <a href="/statements" {{#ifeq pageId "statements"}}class="current" {{/ifeq}}
+           aria-label="Statements">Statements</a>
+
+        <ul class="children">
+            <li>
+                <a href="/statements/exec" itemprop="url">
+                    <span itemprop="name">Executive Branch</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/statements/congress" itemprop="url">
+                    <span itemprop="name">Congress</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/statements/supremecourt" itemprop="url">
+                    <span itemprop="name">Supreme Court</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
 
     <!-- exec -->
 
@@ -175,17 +203,17 @@
         <ul class="children">
             <li>
                 <a href="/student-rights/members-profiles" itemprop="url">
-                    <span itemprop="name">Meeting Minutes</span>
+                    <span itemprop="name">Members</span>
                 </a>
             </li>
             <li>
                 <a href="/student-rights/request-help" itemprop="url">
-                    <span itemprop="name">Join Congress!</span>
+                    <span itemprop="name">Request Help</span>
                 </a>
             </li>
             <li>
                 <a href="/student-rights/apply-sr" itemprop="url">
-                    <span itemprop="name">Congressional Resolutions</span>
+                    <span itemprop="name">Apply to Student Rights</span>
                 </a>
             </li>
         </ul>
@@ -196,4 +224,18 @@
             <span itemprop="name">Contact Us</span>
         </a>
     </li>
+
+    <li>
+        {{#if loggedIn}}
+            <a href="/edit" itemprop="url" tabindex="1" title="Go to Edit Site">
+                <span itemprop="name">Edit Site</span>
+            </a>
+        {{else}}
+            <a href="/login" itemprop="url" tabindex="1" title="Log in">
+                <span itemprop="name">Log In</span>
+            </a>
+        {{/if}}
+    </li>
+
 </ul>
+

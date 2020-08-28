@@ -1,0 +1,85 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+{{#with statement}}
+    <main>
+        <div id="main-content">
+            <div class="bg-none section no-margin-top" id="content">
+                <div class="row">
+                    <div class="layout">
+                        <h2 style="margin-bottom: 0" class="tag-title">{{title}}</h2>
+                        <div>
+                            <article class="profile" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                <dl class="meta inline">
+                                    <dt>By:</dt>
+                                    <dd>{{& author.asLink}}</dd>
+
+                                    {{#unless lastEditAuthor}}
+                                        <dt>Published:</dt>
+                                        <dd>{{date}}</dd>
+                                    {{else}}
+                                        <dt>Last Edited:</dt>
+                                        <dd>{{lastEditDate}}</dd>
+                                    {{/unless}}
+
+                                    {{#if lastEditAuthor}}
+                                        <dt>Last Edited By:</dt>
+                                        <dd>{{& lastEditAuthor.asLink}}</dd>
+                                    {{/if}}
+
+                                    {{#if isPrivileged}}
+                                        <div>
+                                            <a href="/edit-statement/{{id}}" class="button">Edit Statement</a>
+                                            <a href="/delete-statement/{{id}}" class="button">Delete Statement</a>
+                                        </div>
+                                    {{/if}}
+                                </dl>
+
+                                <div style="margin-top: 20px;">
+                                    {{& text}}
+                                </div>
+                            </article>
+                        </div>
+
+                    </div><!-- /.layout --></div>
+            </div>
+
+        </div>
+
+        <div class="section-nav show-for-large" id="section-nav">
+            <div class="row">
+                <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                     data-parent-url="/pattern-library/index">
+                    <ul>
+                        <li class="">
+                            <a href="/statements/executive"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">Executive Statements</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/statements/congress"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">Congress Statements</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/statements/sc"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">Supreme Court Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </main>
+{{/with}}
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>

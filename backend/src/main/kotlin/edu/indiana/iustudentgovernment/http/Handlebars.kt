@@ -1,4 +1,4 @@
-package edu.indiana.iusg.http
+package edu.indiana.iustudentgovernment.http
 
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.Options
@@ -37,7 +37,7 @@ private fun registerHelpers(handlebars: Handlebars) {
     }
 }
 
-private fun render(content: HandlebarsContent): String {
+internal fun renderHbs(content: HandlebarsContent): String {
     val viewName: String = content.viewName
     val template = handlebars.compile(viewName)
     return template.apply(content.model)
@@ -46,5 +46,5 @@ private fun render(content: HandlebarsContent): String {
 data class HandlebarsContent(val viewName: String, val model: Map<String, Any?>)
 
 suspend fun ApplicationCall.respondHbs(handlebarsContent: HandlebarsContent, status: HttpStatusCode?=null) {
-        respondText(render(handlebarsContent), ContentType.parse("text/html"), status)
+        respondText(renderHbs(handlebarsContent), ContentType.parse("text/html"), status)
 }

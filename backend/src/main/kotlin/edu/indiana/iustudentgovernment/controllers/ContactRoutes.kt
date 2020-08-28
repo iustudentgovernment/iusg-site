@@ -1,8 +1,8 @@
-package edu.indiana.iusg.controllers
+package edu.indiana.iustudentgovernment.controllers
 
-import edu.indiana.iusg.data.getMap
-import edu.indiana.iusg.http.HandlebarsContent
-import edu.indiana.iusg.http.respondHbs
+import edu.indiana.iustudentgovernment.data.getMap
+import edu.indiana.iustudentgovernment.http.HandlebarsContent
+import edu.indiana.iustudentgovernment.http.respondHbs
 import io.ktor.application.call
 import io.ktor.http.Parameters
 import io.ktor.request.receiveParameters
@@ -15,15 +15,15 @@ import io.ktor.routing.route
 fun Route.contactRoutes() {
     route("/contact") {
         get("") {
-            val map = getMap("Contact Us", "contact")
+            val map = call.getMap("Contact Us", "contact")
             call.respondHbs(HandlebarsContent("contact-us.hbs", map))
         }
         get("/received") {
-            val map = getMap("Contact Request Received", "contact")
+            val map = call.getMap("Contact Request Received", "contact")
             call.respondHbs(HandlebarsContent("/contact/contact-received.hbs", map))
         }
         get("/press") {
-            val map = getMap("Contact Us | Press", "contact")
+            val map = call.getMap("Contact Us | Press", "contact")
             call.respondHbs(HandlebarsContent("/contact/contact-press.hbs", map))
         }
         post("") {

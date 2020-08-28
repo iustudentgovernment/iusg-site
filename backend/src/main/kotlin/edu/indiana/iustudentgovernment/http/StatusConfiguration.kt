@@ -1,6 +1,6 @@
-package edu.indiana.iusg.http
+package edu.indiana.iustudentgovernment.http
 
-import edu.indiana.iusg.data.getMap
+import edu.indiana.iustudentgovernment.data.getMap
 import io.ktor.application.call
 import io.ktor.features.StatusPages
 import io.ktor.http.ContentType
@@ -14,6 +14,6 @@ fun StatusPages.Configuration.statusConfiguration() {
                 ?: throwable.localizedMessage, ContentType.Any, HttpStatusCode.InternalServerError)
     }
     status(HttpStatusCode.NotFound) {
-        call.respondHbs(HandlebarsContent("404.hbs", getMap("Not Found", "404")))
+        call.respondHbs(HandlebarsContent("404.hbs", call.getMap("Not Found", "404")))
     }
 }

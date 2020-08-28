@@ -1,4 +1,4 @@
-package edu.indiana.iusg.controllers
+package edu.indiana.iustudentgovernment.controllers
 
 import io.ktor.http.content.resources
 import io.ktor.http.content.static
