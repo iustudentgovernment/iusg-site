@@ -14,6 +14,7 @@ import edu.indiana.iustudentgovernment.controllers.statementsRoutes
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
+import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.features.StatusPages
 import io.ktor.routing.Routing
@@ -34,6 +35,8 @@ fun Application.module() {
     install(Sessions) {
         cookie<User>("user", storage = SessionStorageMemory())
     }
+
+    install(ContentNegotiation)
 
     install(Routing) {
         staticContentRoutes()

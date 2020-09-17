@@ -41,7 +41,7 @@ fun Route.casRoutes() {
 
     get("/logout") {
         call.sessions.clear<User>()
-        call.respondRedirect("https://cas.iu.edu/cas/logout")
+        call.respondRedirect("/")
     }
 
 }

@@ -14,7 +14,7 @@
                             <meta content="1" itemprop="position"/>
                         </li>
                         <li class="current" itemprop="itemListElement" itemscope="itemscope"
-                            itemtype="http://schema.org/ListItem"><span itemprop="item name">Student Rights</span>
+                            itemtype="http://schema.org/ListItem"><span itemprop="item name">Edit Site - Home</span>
                             <meta content="2" itemprop="position"/>
                         </li>
                     </ul>
@@ -23,7 +23,7 @@
         </div>
         <div class="section page-title bg-none">
             <div class="row">
-                <div class="layout"><h1>Student Rights</h1></div>
+                <div class="layout"><h1>Edit Site</h1></div>
             </div>
         </div>
     </div>
@@ -31,51 +31,52 @@
         <div class="collapsed bg-none section" id="content">
             <div class="row">
                 <div class="layout">
-                    <div class="text"><h3>The Campus Conduct System can be Confusing—We Can Help</h3>
-                        <p><span>Student Rights is a student-led department within IUSG with the mission of advocating for and protecting the rights of students on our campus. We primarily accomplish this goal by working with individual students and student groups who have been accused of academic or personal misconduct.</span>
+                    <div class="text"><h3>Make your mark on IUSG. Edit this site.</h3>
+                        <p>
+                            Use the sidebar to manage sections of the site that you have access to. If there's a part of
+                            the site
+                            that you should have access to, but don't, please send the CTO an email.
                         </p>
-                        <p>The IUSG Department of Student Rights is a highly trained group of students who advocate for
-                            student rights on the Bloomington campus. We offer two primary services: 1) advising and
-                            assisting students and student groups in the campus conduct system and 2) providing a
-                            peer-to-peer mediation service in order to resolve conflicts between roommates, neighbors,
-                            or other students on campus. We offer free and confidential help to students for:</p>
-                        <ul>
-                            <li>Alcohol violations</li>
-                            <li>Illegal drug possession</li>
-                            <li>Residence hall violations</li>
-                            <li>Academic misconduct</li>
-                            <li>Grade appeals</li>
-                            <li>Personal mediation</li>
-                        </ul>
-                        <p>Trained<span>&#160;</span>case managers<span>&#160;</span>can prepare you for and attend your
-                            hearing. Student Rights also analyzes IU policy as it pertains to students&#8217; rights.&#160;
-                        </p>
-                        <p><br/><span>Please note that, like most student government members, Student Rights staff are not compensated.&#160; Please also note that the application process is highly competitive, as we typically receive many applications for a limited number of vacancies. We are currently looking to recruit a small number of staff to begin training immediately in the fall semester.</span>
-                        </p>
-                        <p>If you have any questions, please contact us at <a href="mailto:iusasr@indiana.edu">iusasr@indiana.edu</a></p></div>
-                </div><!-- /.layout --></div>
+                    </div><!-- /.layout --></div>
+            </div>
+        </div>
+
+
+        <div class="section-nav show-for-large" id="section-nav">
+            <div class="row">
+                <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                     data-parent-url="/student-rights/index">
+                    <ul>
+                        {{#if judicial}}
+                            <li class=""><a
+                                    href="/edit/judicial"
+                                    itemprop="url" class=""><span itemprop="name">Supreme Court</span></a></li>
+                        {{/if}}
+                        {{#if executive}}
+                            <li class=""><a
+                                    href="/edit/executive"
+                                    itemprop="url" class=""><span itemprop="name">Executive Branch</span></a></li>
+                        {{/if}}
+                        {{#if legislative}}
+                            <li class=""><a
+                                    href="/edit/congress"
+                                    itemprop="url" class=""><span itemprop="name">Congress</span></a></li>
+                        {{/if}}
+                        {{#if election-commission}}
+                            <li class=""><a
+                                    href="/edit/electioncommission"
+                                    itemprop="url" class=""><span itemprop="name">Election Commission</span></a></li>
+                        {{/if}}
+                        {{#if administrator}}
+                            <li class=""><a
+                                    href="/edit/administrative"
+                                    itemprop="url" class=""><span itemprop="name">Administration</span></a></li>
+                        {{/if}}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
-
-
-    <div class="section-nav show-for-large" id="section-nav">
-        <div class="row">
-            <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
-                 data-parent-url="/student-rights/index">
-                <ul>
-                    <li class=""><a
-                            href="/student-rights/members-profiles"
-                            itemprop="url" class=""><span itemprop="name">Members</span></a></li>
-                    <li class=""><a href="/student-rights/request-help"
-                                    itemprop="url" class=""><span itemprop="name">Request Help</span></a></li>
-                    <li class=""><a href="/student-rights/apply-sr"
-                                    itemprop="url" class=""><span itemprop="name">Apply to Student Rights</span></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-
 </main>
 {{> partials/footer.hbs }}
 </body>

@@ -2,13 +2,13 @@ package edu.indiana.iustudentgovernment.data
 
 import edu.indiana.iustudentgovernment.authentication.Member
 import edu.indiana.iustudentgovernment.authentication.Role
+import edu.indiana.iustudentgovernment.data.CommitteeRole.MEMBER
 import edu.indiana.iustudentgovernment.models.Idable
 import edu.indiana.iustudentgovernment.database
 
 data class Committee(
         val formalName: String,
         val id: String,
-        var chairUsername: String,
         val permissionLevelForEntry: Int,
         val committeeType: CommitteeType,
         var committeeMemberships: MutableList<CommitteeMembership> = mutableListOf(),
@@ -17,13 +17,9 @@ data class Committee(
     override fun getPermanentId() = id
 
     fun isPrivileged(user: Member) =
-            chairUsername == user.username || user.isAdministrator() || committeeMemberships
-                    .first { it.committeeId == id }
-                    .let { membership ->
-                        membership.committeeRole != CommitteeRole.MEMBER
-                    }
+            user.username in committeeMemberships.filter { it.committeeRole != MEMBER }.map { it.username } || user.isAdministrator()
 
-    val chair get() = database.getMember(chairUsername)!!
+    val chairs get() = committeeMemberships.filter { it.committeeRole != MEMBER }.map { it.member }
     val membersString get() = committeeMemberships.joinToString(", ") { it.member.asLink() }
     val upcomingMeetings get() = database.getFutureMeetings().filter { it.committeeId == id }.take(3)
     val pastMeetings get() = database.getPastMeetings().filter { it.committeeId == id }.take(3)
@@ -35,7 +31,7 @@ data class Committee(
 }
 
 data class CommitteeMembership(val username: String, val id: String, val committeeId: String, val committeeRole: CommitteeRole) : Idable {
-    val committee by lazy { database.getCommittee(committeeId)!! }
+    val committee get() = database.getCommittee(committeeId)!!
     val member get() = database.getMember(username)!!
 
     override fun getPermanentId() = id

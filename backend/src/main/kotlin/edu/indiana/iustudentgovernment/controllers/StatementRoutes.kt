@@ -25,11 +25,12 @@ fun Route.statementsRoutes() {
         get("") {
             val map = call.getMap("Statements", "statements")
 
-            val statements = database.getStatements()
-            map["exec-statements"] = statements.filter { it.branch == EXECUTIVE }
-            map["congress-statements"] = statements.filter { it.branch == LEGISLATIVE }
-            map["sc-statements"] = statements.filter { it.branch == JUDICIAL }
+            val type = call.request.queryParameters["type"]
 
+            val statements = database.getStatements()
+            if (type == null || type == "executive") map["exec-statements"] = statements.filter { it.branch == EXECUTIVE }
+            if (type == null || type == "congress") map["congress-statements"] = statements.filter { it.branch == LEGISLATIVE }
+            if (type == null || type == "sc") map["sc-statements"] = statements.filter { it.branch == JUDICIAL }
 
             map["statementsSize"] = database.getStatements().size
             map["isPrivileged"] = call.getUser()?.let { canEditStatements(it) }

@@ -1,9 +1,14 @@
 <ul {{#if desktop}}class="row pad"{{/if}}>
     <!-- about -->
     <li class="first home has-children" aria-haspopup="true">
-        <a href="/about" {{#ifeq pageId "about"}}class="current" {{/ifeq}} aria-label="About">About</a>
+        <a href="/about" {{#ifeq pageId "about"}}class="current" {{/ifeq}} aria-label="About">About + News</a>
 
         <ul class="children">
+            <li>
+                <a href="/statements" itemprop="url">
+                    <span itemprop="name">Statements</span>
+                </a>
+            </li>
             <li>
                 <a href="/about" itemprop="url">
                     <span itemprop="name">Guiding Documents</span>
@@ -26,33 +31,6 @@
             </li>
         </ul>
     </li>
-
-    <!-- statements -->
-    <li class="has-children">
-        <a href="/statements" {{#ifeq pageId "statements"}}class="current" {{/ifeq}}
-           aria-label="Statements">Statements</a>
-
-        <ul class="children">
-            <li>
-                <a href="/statements/exec" itemprop="url">
-                    <span itemprop="name">Executive Branch</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="/statements/congress" itemprop="url">
-                    <span itemprop="name">Congress</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="/statements/supremecourt" itemprop="url">
-                    <span itemprop="name">Supreme Court</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-
 
     <!-- exec -->
 
@@ -212,8 +190,8 @@
 
     <li>
         {{#if loggedIn}}
-            <a href="/edit" itemprop="url" tabindex="1" title="Go to Edit Site">
-                <span itemprop="name">Edit Site</span>
+            <a href="/logout" itemprop="url" tabindex="1" title="Log out">
+                <span itemprop="name">Log Out</span>
             </a>
         {{else}}
             <a href="/login" itemprop="url" tabindex="1" title="Log in">
@@ -221,6 +199,14 @@
             </a>
         {{/if}}
     </li>
+
+    {{#if loggedIn}}
+        <li>
+            <a href="/edit" itemprop="url" tabindex="1" title="Go to Edit Site">
+                <span itemprop="name">Edit Site</span>
+            </a>
+        </li>
+    {{/if}}
 
 </ul>
 

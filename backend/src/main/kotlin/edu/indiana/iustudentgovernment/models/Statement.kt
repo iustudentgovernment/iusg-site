@@ -41,5 +41,6 @@ private fun Long.getAsDate() = LocalDateTime.ofInstant(Instant.ofEpochMilli(this
 enum class IusgBranch {
     EXECUTIVE,
     LEGISLATIVE,
-    JUDICIAL
+    JUDICIAL,
+    ELECTION_COMMISSION
 }

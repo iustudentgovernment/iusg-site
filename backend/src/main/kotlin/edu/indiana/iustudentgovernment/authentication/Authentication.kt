@@ -1,5 +1,6 @@
 package edu.indiana.iustudentgovernment.authentication
 
+import edu.indiana.iustudentgovernment.data.CommitteeRole.COMMITTEE_CHAIR
 import edu.indiana.iustudentgovernment.models.Idable
 import edu.indiana.iustudentgovernment.database
 import edu.indiana.iustudentgovernment.models.IusgBranch
@@ -62,6 +63,10 @@ data class Member(
     fun asLink() = "<a href='/members/$username'>$name</a>"
 
     val steering get() = title.map { it.rank }.max()!! >= 2
+
+    val titlesEnumString get() = title.joinToString(",")
+    val committeeChairString get() = committeeMemberships.filter { it.committeeRole == COMMITTEE_CHAIR }.map { it.committeeId }.joinToString(",")
+
 
     override fun getPermanentId() = username
 }

@@ -3,30 +3,30 @@ package edu.indiana.iustudentgovernment.data
 import com.rethinkdb.RethinkDB.r
 import edu.indiana.iustudentgovernment.authentication.Member
 import edu.indiana.iustudentgovernment.authentication.Title
-import edu.indiana.iustudentgovernment.data.Committee
-import edu.indiana.iustudentgovernment.data.CommitteeMembership
-import edu.indiana.iustudentgovernment.data.CommitteeRole
-import edu.indiana.iustudentgovernment.data.CommitteeType.EXECUTIVE
-import edu.indiana.iustudentgovernment.http.HandlebarsContent
-import edu.indiana.iustudentgovernment.http.renderHbs
-import edu.indiana.iustudentgovernment.models.Idable
-import edu.indiana.iustudentgovernment.models.Meeting
-import edu.indiana.iustudentgovernment.utils.asPojo
-import edu.indiana.iustudentgovernment.utils.queryAsArrayList
 import edu.indiana.iustudentgovernment.connection
+import edu.indiana.iustudentgovernment.data.CommitteeRole.COMMITTEE_CHAIR
+import edu.indiana.iustudentgovernment.data.CommitteeType.EXECUTIVE
 import edu.indiana.iustudentgovernment.fromEmail
 import edu.indiana.iustudentgovernment.gson
+import edu.indiana.iustudentgovernment.http.HandlebarsContent
+import edu.indiana.iustudentgovernment.http.renderHbs
+import edu.indiana.iustudentgovernment.models.Complaint
+import edu.indiana.iustudentgovernment.models.Idable
 import edu.indiana.iustudentgovernment.models.IndividualVote
 import edu.indiana.iustudentgovernment.models.IusgBranch
-import edu.indiana.iustudentgovernment.models.IusgBranch.LEGISLATIVE
 import edu.indiana.iustudentgovernment.models.Legislation
+import edu.indiana.iustudentgovernment.models.Meeting
 import edu.indiana.iustudentgovernment.models.Message
 import edu.indiana.iustudentgovernment.models.Note
 import edu.indiana.iustudentgovernment.models.Statement
+import edu.indiana.iustudentgovernment.models.SupremeCourtDecision
 import edu.indiana.iustudentgovernment.models.Vote
 import edu.indiana.iustudentgovernment.urlBase
+import edu.indiana.iustudentgovernment.utils.asPojo
 import edu.indiana.iustudentgovernment.utils.createEmail
+import edu.indiana.iustudentgovernment.utils.queryAsArrayList
 import edu.indiana.iustudentgovernment.utils.sendMessage
+import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 
 private val membersTable = "users"
@@ -43,6 +43,7 @@ private val keysTable = "keys"
 private val messagesTable = "messages"
 private val whitcombTable = "whitcomb"
 private val complaintsTable = "complaints"
+private val supremeCourtDecisions = "sc_decisions"
 
 private val tables = listOf(
         membersTable to "username",
@@ -58,26 +59,10 @@ private val tables = listOf(
         keysTable to "id",
         messagesTable to "id",
         whitcombTable to "week",
-        complaintsTable to "id"
+        complaintsTable to "id",
+        supremeCourtDecisions to "id"
 ).toMap()
 
-val caches = ConcurrentHashMap(
-        listOf<Pair<String, MutableList<Idable>>>(
-                membersTable to mutableListOf(),
-                legislationTable to mutableListOf(),
-                committeesTable to mutableListOf(),
-                meetingMinutesTable to mutableListOf(),
-                meetingsTable to mutableListOf(),
-                attendanceTable to mutableListOf(),
-                meetingFilesTable to mutableListOf(),
-                committeeFilesTable to mutableListOf(),
-                votesTable to mutableListOf(),
-                statementsTable to mutableListOf(),
-                messagesTable to mutableListOf(),
-                whitcombTable to mutableListOf(),
-                complaintsTable to mutableListOf()
-        ).toMap().toMutableMap()
-)
 class Database(val cleanse: Boolean) {
 
     init {
@@ -112,9 +97,16 @@ class Database(val cleanse: Boolean) {
                 Committee(
                         "Executive Cabinet",
                         "cabinet",
-                        "raryani",
                         1,
-                        EXECUTIVE
+                        EXECUTIVE,
+                        mutableListOf(
+                                CommitteeMembership(
+                                        "raryani",
+                                        UUID.randomUUID().toString(),
+                                        "cabinet",
+                                        COMMITTEE_CHAIR
+                                )
+                        )
                 )
         )
 
@@ -351,7 +343,7 @@ class Database(val cleanse: Boolean) {
 
     fun updateMeeting(meeting: Meeting) = update(meetingsTable, meeting.meetingId, meeting)
     fun deleteMeeting(meetingId: String) = delete(meetingsTable, meetingId)
-    
+
 
     // legislation
     fun insertLegislation(legislation: Legislation) {
@@ -450,50 +442,39 @@ class Database(val cleanse: Boolean) {
     fun getSpeakerMessage() = getMessage("speaker_message")!!.value
     fun getWhitcombDescription() = getMessage("whitcomb_description")!!.value.toString()
 
+    // dockets
+    fun getDecision(id: String): SupremeCourtDecision? = get(supremeCourtDecisions, id)
+    fun insertDecision(decision: SupremeCourtDecision) = insert(supremeCourtDecisions, decision)
+    fun updateDecision(decision: SupremeCourtDecision) = update(messagesTable, decision.id, decision)
+    fun deleteDecision(id: String) = delete(messagesTable, id)
+
+    fun getComplaint(id: String): Complaint? = get(complaintsTable, id)
+    fun updateComplaint(complaint: Complaint) = update(complaintsTable, complaint.id, complaint)
+    fun deleteComplaint(id: String) = delete(complaintsTable, id)
+    fun insertComplaint(complaint: Complaint) = insert(complaintsTable, complaint)
+
     // utils
 
     fun getUuid() = r.uuid().run<String>(connection)!!
 
 
     fun update(table: String, id: Any, obj: Idable): Any? {
-        if (table in caches.keys) {
-            caches[table]!!.removeIf { it.getPermanentId() == id }
-            caches[table]!!.add(obj)
-        }
         return r.table(table).get(id).replace(r.json(gson.toJson(obj))).run<Any>(connection)
     }
 
     fun delete(table: String, id: Any): Any? {
-        if (table in caches.keys) caches[table]!!.removeIf { it.getPermanentId() == id }
         return r.table(table).get(id).delete().run<Any>(connection)
     }
 
     fun <T : Idable> insert(table: String, obj: T): Any? {
-        if (table in caches.keys) caches[table]!!.add(obj)
         return r.table(table).insert(r.json(gson.toJson(obj))).run<Any>(connection)
     }
 
     inline fun <reified T : Idable> getAll(table: String): List<T> {
-        return if (table in caches.keys && caches[table]!!.isNotEmpty()) {
-            caches[table]!!.mapNotNull { it as? T }
-        } else {
-            val values = r.table(table).run<Any>(connection).queryAsArrayList(gson, T::class.java).filterNotNull()
-            caches[table]!!.addAll(values)
-
-            values
-        }
+        return r.table(table).run<Any>(connection).queryAsArrayList(gson, T::class.java).filterNotNull()
     }
 
     inline fun <reified T : Idable> get(table: String, id: Any): T? {
-        return if (table in caches.keys) {
-            val cache = caches[table]!!
-            val found = cache.find { it.getPermanentId() == id }
-            if (found == null) {
-                val retrieved = asPojo(gson, r.table(table).get(id).run(connection), T::class.java)
-                (retrieved as? Idable)?.let { cache.add(it) }
-            }
-
-            cache.find { it.getPermanentId() == id } as? T
-        } else asPojo(gson, r.table(table).get(id).run(connection), T::class.java)
+        return asPojo(gson, r.table(table).get(id).run(connection), T::class.java)
     }
 }
