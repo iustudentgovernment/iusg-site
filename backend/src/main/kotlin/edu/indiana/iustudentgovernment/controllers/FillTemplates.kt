@@ -10,10 +10,11 @@ import edu.indiana.iustudentgovernment.models.IusgBranch
 import edu.indiana.iustudentgovernment.models.IusgBranch.EXECUTIVE
 import edu.indiana.iustudentgovernment.models.IusgBranch.JUDICIAL
 import edu.indiana.iustudentgovernment.models.IusgBranch.LEGISLATIVE
-import edu.indiana.iustudentgovernment.models.Statement
+import edu.indiana.iustudentgovernment.models.Bio
 import edu.indiana.iustudentgovernment.utils.nullifyEmpty
 import io.ktor.application.call
 import io.ktor.response.respondRedirect
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
+

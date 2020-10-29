@@ -1,0 +1,81 @@
+<html>
+{{> partials/head.hbs }}
+<body class="mahogany no-banner has-page-title landmarks">
+{{> partials/header.hbs }}
+
+{{#with bios}}
+    <main>
+        <div id="main-content">
+            <div class="bg-none section no-margin-top" id="content">
+                <div class="row">
+                    <div class="layout">
+                        <h2 style="margin-bottom: 0" class="tag-title">{{title}}</h2>
+                        <div>
+                            <article class="profile" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                <dl class="meta inline">
+                                    <dt>Name:</dt>
+                                    <dd>{{firstName}} {{lastName}}</dd>
+
+                                    <dt>Email:</dt>
+                                    <dd>{{email}}</dd>
+
+                                    <dt>Branch:</dt>
+                                    <dd>{{branch}}</dd>
+
+                                    <dt>Title:</dt>
+                                    <dd>{{title}}</dd>
+
+                                    {{#if isPrivileged}}
+                                        <div>
+                                            <a href="/edit-bios/{{id}}" class="button">Edit Bios</a>
+                                            <a href="/delete-bios/{{id}}" class="button">Delete Bios</a>
+                                        </div>
+                                    {{/if}}
+                                </dl>
+
+                                <div style="margin-top: 20px;">
+                                    {{& jobDescription}}
+                                </div>
+                            </article>
+                        </div>
+
+                    </div><!-- /.layout --></div>
+            </div>
+
+        </div>
+
+        <div class="section-nav show-for-large" id="section-nav">
+            <div class="row">
+                <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Section"
+                     data-parent-url="/pattern-library/index">
+                    <ul>
+                        <li class="">
+                            <a href="/bios?type=executive"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">Executive Bios</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/bios?type=congress"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">Congress Bios</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/bios?type=sc"
+                               itemprop="url" class="">
+                                <span style="" itemprop="name">Supreme Court Bios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </main>
+{{/with}}
+
+{{> partials/footer.hbs }}
+</body>
+
+</html>
